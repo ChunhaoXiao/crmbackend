@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Thread;
 use App\Http\Requests\ThreadRequest;
+use Illuminate\Support\Facades\Auth;
+
 class ThreadController extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class ThreadController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
 
@@ -26,8 +28,8 @@ class ThreadController extends Controller
      */
     public function store(ThreadRequest $request)
     {
-        //return response()->json(['s' => 'aaaa']);
-        Thread::create($request->all());
+        $user = Auth::user();
+        $user->threads()->create($request->all());
         return response()->json(['status' => 0]);
     }
 

@@ -18,10 +18,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/options/{type}', 'DataSourceController@index');
-Route::resource('/thread', 'ThreadController');
-Route::resource('/customer', 'CustomerController');
-Route::resource('/contact', 'ContactController');
-Route::post('/upload', 'UploadController@store');
-Route::resource('/product', 'ProductController');
-Route::resource('/business', 'BusinessController');
+Route::post('/authuser', 'AuthController@store');
+
+
+Route::middleware('auth:api')->group(function() {
+    Route::resource('/thread', 'ThreadController');
+    Route::resource('/customer', 'CustomerController');
+    Route::resource('/contact', 'ContactController');
+    Route::post('/upload', 'UploadController@store');
+    Route::resource('/product', 'ProductController');
+    Route::resource('/business', 'BusinessController');
+    Route::get('/options/{type}', 'DataSourceController@index');
+    Route::resource('contract', 'ContractController');
+});
+
+
+

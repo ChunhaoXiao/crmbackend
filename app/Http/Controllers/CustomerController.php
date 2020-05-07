@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Http\Requests\CustomerRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
@@ -36,7 +37,8 @@ class CustomerController extends Controller
      */
     public function store(CustomerRequest $request)
     {
-        Customer::create($request->input());
+        $user = Auth::user();
+        return $user->customers()->create($request->input());
     }
 
     /**

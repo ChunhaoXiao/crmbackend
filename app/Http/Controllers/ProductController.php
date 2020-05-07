@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Http\Resources\Product as ProductResource;
+use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -15,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $datas = Product::latest()->paginate();
+        $datas = Auth::user()->products()->latest()->paginate();
         return ProductResource::collection($datas);
     }
 
@@ -27,10 +29,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        $datas = $request->input();
-        Product::create($datas);
+        return Auth::user()->products()->create($request->input());
     }
 
     /**

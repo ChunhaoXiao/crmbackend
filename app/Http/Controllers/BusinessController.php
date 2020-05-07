@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Business;
 use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\BusinessRequest;
 
 class BusinessController extends Controller
 {
@@ -15,7 +17,7 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -25,7 +27,7 @@ class BusinessController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,15 +36,11 @@ class BusinessController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BusinessRequest $request)
     {
         $datas = $request->except('products');
-        $business = Business::create($datas);
-        
-
+        $business = Auth::user()->businesses()->create($datas);
         if($products = $request->products) {
-            //return $products;
-
             $business->products()->attach($products);
         }
         return $business;

@@ -3,35 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\DataSource;
-use App\Models\Customer;
-use App\Models\Product;
-use App\Http\Resources\Product as ProductResource;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ContractRequest;
 
-class DataSourceController extends Controller
+class ContractController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $type)
+    public function index()
     {
-        if($type == 'customer') {
-           return Auth::user()->customers()->latest()->paginate(20);  //要加where('user_id', Auth::user()->id)
-        }
-
-        if($type == 'product') {
-            $products = Product::latest()->paginate();
-            return ProductResource::collection(Auth::user()->products()->paginate(20));
-        }
-
-        if($type == 'business') {
-            return Auth::user()->businesses()->latest()->paginate(20);
-        }
-
-        return DataSource::src($type)->get();
+        //
     }
 
     /**
@@ -41,7 +25,7 @@ class DataSourceController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -50,9 +34,9 @@ class DataSourceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContractRequest $request)
     {
-        //
+        Auth::user()->contracts()->create($request->input());
     }
 
     /**
