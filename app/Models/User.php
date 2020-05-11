@@ -61,4 +61,12 @@ class User extends Authenticatable
     public function contracts() {
         return $this->hasMany(Contract::class);
     }
+
+    public function payments() {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function calls() {
+        return $this->hasMany(Call::class, 'user_id');
+    }
 }

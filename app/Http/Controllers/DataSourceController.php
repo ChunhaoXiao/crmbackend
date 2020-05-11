@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Http\Resources\Product as ProductResource;
 use Illuminate\Support\Facades\Auth;
 
+
 class DataSourceController extends Controller
 {
     /**
@@ -18,20 +19,27 @@ class DataSourceController extends Controller
      */
     public function index(Request $request, $type)
     {
-        if($type == 'customer') {
-           return Auth::user()->customers()->latest()->paginate(20);  //要加where('user_id', Auth::user()->id)
+        if(in_array($type, ['customers', 'products', 'businesses', 'contracts']))
+        {
+            return Auth::user()->$type()->latest()->paginate();
         }
 
-        if($type == 'product') {
-            $products = Product::latest()->paginate();
-            return ProductResource::collection(Auth::user()->products()->paginate(20));
-        }
+        // if($type == 'customer') {
+        //    return Auth::user()->customers()->latest()->paginate(20);  //要加where('user_id', Auth::user()->id)
+        // }
 
-        if($type == 'business') {
-            return Auth::user()->businesses()->latest()->paginate(20);
-        }
+        // if($type == 'product') {
+        //     $products = Product::latest()->paginate();
+        //     return ProductResource::collection(Auth::user()->products()->paginate(20));
+        // }
 
-        return DataSource::src($type)->get();
+        // if($type == 'business') {
+        //     return Auth::user()->businesses()->latest()->paginate(20);
+        // }
+
+        
+
+        return DataSource::src($type)->paginate();
     }
 
     /**

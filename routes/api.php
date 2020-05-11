@@ -30,6 +30,10 @@ Route::middleware('auth:api')->group(function() {
     Route::resource('/business', 'BusinessController');
     Route::get('/options/{type}', 'DataSourceController@index');
     Route::resource('contract', 'ContractController');
+    Route::resource('/payment', 'PaymentController');
+    Route::resource('/call', 'CallController');
+
+    Route::get('/related/{customer_id}', 'CustomerRelatedController@index');
 });
 
 

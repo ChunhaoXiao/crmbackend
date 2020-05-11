@@ -3,22 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Customer;
-use App\Http\Requests\CustomerRequest;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Resources\Customer as CustomerResource;
-
-class CustomerController extends Controller
+class CallController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $datas = Auth::user()->customers()->with('level')->paginate();
-        return CustomerResource::collection($datas);
+        $datas =  Auth::user()->calls()->where('customer_id', $request->customer_id)->get();
+        return $datas;
     }
 
     /**
@@ -37,10 +33,10 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CustomerRequest $request)
+    public function store(Request $request)
     {
-        $user = Auth::user();
-        return $user->customers()->create($request->input());
+        $datas = $request->input();
+        Auth::user()->calls()->create($datas);
     }
 
     /**
@@ -49,9 +45,9 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show($id)
     {
-        return new CustomerResource($customer);
+        //
     }
 
     /**

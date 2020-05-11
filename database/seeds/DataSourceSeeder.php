@@ -40,6 +40,14 @@ class DataSourceSeeder extends Seeder
             ['name' => '二级商机', 'data_model' => 'business_level'],
             ['name' => '三级商机', 'data_model' => 'business_level'],
             ['name' => '八级商机', 'data_model' => 'business_level'],
+
+            ['name' => '现金',     'data_model' => 'pay_method'],
+            ['name' => '银行转账', 'data_model' => 'pay_method'],
+            ['name' => '微信转账', 'data_model' => 'pay_method'],
+
+            ['name' => '电话跟进', 'data_model' => 'call_method'],
+            ['name' => '邮件跟进', 'data_model' => 'call_method'],
+            ['name' => '微信跟进', 'data_model' => 'call_method'],
             
 
         ];

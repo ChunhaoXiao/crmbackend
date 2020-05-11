@@ -25,8 +25,8 @@ class CustomerRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'source' => 'required',
-            'industry' => 'required',
+            'source_id' => 'required',
+            'industry_id' => 'required',
             'customer_level' => 'required',
         ];
     }
