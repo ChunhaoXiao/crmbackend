@@ -19,4 +19,14 @@ class Customer extends Model
     public function industry() {
         return $this->belongsTo(DataSource::class, 'industry_id');
     }
+
+    public function contacts() {
+        return $this->hasMany(Contact::class);
+    }
+
+    public function getPicturelistAttribute() {
+        return $this->pictures->map(function($item) {
+            return asset('Storage/'.$item);
+        });
+    }
 }

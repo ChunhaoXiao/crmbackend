@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    echo 'adasd';
     //return view('welcome');
 });
 Route::namespace('Admin')->prefix('admin')->group(function() {

@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +33,8 @@ Route::middleware('auth:api')->group(function() {
     Route::resource('/call', 'CallController');
 
     Route::get('/related/{customer_id}', 'CustomerRelatedController@index');
+    Route::get('/{customer}/contact', 'CustomerContactController@index');
+    
 });
 
 

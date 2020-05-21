@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PaymentRequest;
+use App\Http\Resources\Payment as PaymentResource;
+use App\Models\Payment;
 
 class PaymentController extends Controller
 {
@@ -15,7 +17,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        return PaymentResource::collection(Auth::user()->payments()->paginate());
     }
 
     /**
@@ -45,9 +47,9 @@ class PaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Payment $payment)
     {
-        //
+        return new PaymentResource($payment);
     }
 
     /**

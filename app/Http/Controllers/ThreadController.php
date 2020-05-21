@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Thread;
 use App\Http\Requests\ThreadRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\Thread as ThreadResource;
 
 class ThreadController extends Controller
 {
@@ -16,7 +17,8 @@ class ThreadController extends Controller
      */
     public function index()
     {
-        
+        $datas = Auth::user()->threads()->with(['src', 'level', 'industry'])->paginate();
+        return ThreadResource::collection($datas);
     }
 
 
@@ -39,9 +41,10 @@ class ThreadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Thread $thread)
     {
-        //
+        
+        return new ThreadResource($thread);
     }
 
 

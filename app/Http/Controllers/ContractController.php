@@ -15,7 +15,8 @@ class ContractController extends Controller
      */
     public function index()
     {
-        //
+        $datas = Auth::user()->contracts()->latest()->paginate();
+        return $datas;
     }
 
     /**

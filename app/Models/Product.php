@@ -19,4 +19,16 @@ class Product extends Model
     public function businesses() {
         return $this->belongsToMany(Business::class);
     }
+
+    public function piclist() {
+        // $this->picture->foreach(function($item) {
+        //     return 
+        // });
+    }
+
+    public function getPicturelistAttribute() {
+        return array_map(function($item) {
+            return asset('Storage/'.$item);
+        }, $this->pictures);
+    }
 }

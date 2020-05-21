@@ -7,6 +7,7 @@ use App\Models\Business;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\BusinessRequest;
+use App\Http\Resources\Business as BusinessResource;
 
 class BusinessController extends Controller
 {
@@ -17,7 +18,8 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        
+        $datas =  Auth::user()->businesses()->with(['customer', 'level'])->paginate();
+        return  BusinessResource::collection($datas);
     }
 
     /**
@@ -52,9 +54,9 @@ class BusinessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Business $business)
     {
-        //
+        return new BusinessResource($business);
     }
 
     /**

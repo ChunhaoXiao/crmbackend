@@ -21,7 +21,8 @@ class Product extends JsonResource
            'price' => $this->price,
            'description' => $this->description,
            'cover' => $this->cover,
-           //'pictures' => $this->pictures->each->cover,
+           'picturelist' => $this->picturelist,
+           'on_sale' => $this->is_on_sale == 1 ? '已上架' :'已下架',
        ];
     }
 }
