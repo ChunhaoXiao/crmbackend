@@ -12,6 +12,12 @@ class Contract extends Model
         'archive' => 'array'
     ];
 
+    protected $with = ['customer', 'business'];
+
+    public function business() {
+        return $this->belongsTo(Business::class, 'business_id');
+    }
+
     public function customer() {
         return $this->belongsTo(Customer::class, 'customer_id');
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ContractRequest;
+use App\Models\Contract;
 
 class ContractController extends Controller
 {
@@ -46,9 +47,9 @@ class ContractController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Contract $contract)
     {
-        //
+        return $contract;
     }
 
     /**
