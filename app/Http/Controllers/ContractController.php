@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ContractRequest;
 use App\Models\Contract;
+use App\Http\Resources\Contract as ContractResource;
 
 class ContractController extends Controller
 {
@@ -17,7 +18,7 @@ class ContractController extends Controller
     public function index()
     {
         $datas = Auth::user()->contracts()->latest()->paginate();
-        return $datas;
+        return ContractResource::collection($datas);
     }
 
     /**
@@ -49,7 +50,7 @@ class ContractController extends Controller
      */
     public function show(Contract $contract)
     {
-        return $contract;
+        return new ContractResource($contract);
     }
 
     /**
