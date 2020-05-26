@@ -3,43 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\DataSource;
-use App\Models\Customer;
-use App\Models\Product;
-use App\Http\Resources\Product as ProductResource;
+use App\Models\Agenda;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\AgendaRequest;
+use App\Http\Resources\AgendaResource;
 
-
-class DataSourceController extends Controller
+class AgendaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $type)
+    public function index(Request $request)
     {
-        if(in_array($type, ['customers', 'products', 'businesses', 'contracts', 'contacts']))
-        {
-            return Auth::user()->$type()->latest()->paginate();
-        }
-
-        // if($type == 'customer') {
-        //    return Auth::user()->customers()->latest()->paginate(20);  //要加where('user_id', Auth::user()->id)
-        // }
-
-        // if($type == 'product') {
-        //     $products = Product::latest()->paginate();
-        //     return ProductResource::collection(Auth::user()->products()->paginate(20));
-        // }
-
-        // if($type == 'business') {
-        //     return Auth::user()->businesses()->latest()->paginate(20);
-        // }
-
-        
-
-        return DataSource::src($type)->paginate();
+        $date = $request->date;
+        $datas = Auth::user()->agendas()->day($date)->latest()->get();
+        return AgendaResource::collection($datas)->collection->groupBy('groups');
     }
 
     /**
@@ -49,7 +29,7 @@ class DataSourceController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -58,9 +38,11 @@ class DataSourceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AgendaRequest $request)
     {
-        
+        $datas = $request->input();
+        $res = Auth::user()->agendas()->create($datas);
+        //return $res;
     }
 
     /**

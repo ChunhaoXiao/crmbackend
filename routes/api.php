@@ -27,13 +27,17 @@ Route::middleware('auth:api')->group(function() {
     Route::post('/upload', 'UploadController@store');
     Route::resource('/product', 'ProductController');
     Route::resource('/business', 'BusinessController');
+
     Route::get('/options/{type}', 'DataSourceController@index');
+
     Route::resource('contract', 'ContractController');
     Route::resource('/payment', 'PaymentController');
     Route::resource('/call', 'CallController');
 
     Route::get('/related/{customer_id}', 'CustomerRelatedController@index');
     Route::get('/{customer}/contact', 'CustomerContactController@index');
+
+    Route::resource('/agenda', 'AgendaController');
     
 });
 

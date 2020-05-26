@@ -69,4 +69,8 @@ class User extends Authenticatable
     public function calls() {
         return $this->hasMany(Call::class, 'user_id');
     }
+
+    public function agendas() {
+        return $this->hasMany(Agenda::class, 'user_id');
+    }
 }

@@ -48,9 +48,21 @@ class DataSourceSeeder extends Seeder
             ['name' => '电话跟进', 'data_model' => 'call_method'],
             ['name' => '邮件跟进', 'data_model' => 'call_method'],
             ['name' => '微信跟进', 'data_model' => 'call_method'],
-            
 
+            ['name' => '会议', 'data_model' => 'agenda'],
+            ['name' => '拜访客户', 'data_model' => 'agenda'],
+            ['name' => '其它', 'data_model' => 'agenda'],
+
+            ['name' => '不提醒', 'data_model' => 'remind'],
+            ['name' => '准时', 'data_model' => 'remind'],
+            ['name' => '提前10分钟', 'data_model' => 'remind'],
+            ['name' => '提前30分钟', 'data_model' => 'remind'],
+            ['name' => '提前1小时', 'data_model' => 'remind'],
+            ['name' => '提前2小时', 'data_model' => 'remind'],
+            ['name' => '提前6小时', 'data_model' => 'remind'],
+            ['name' => '提前一天', 'data_model' => 'remind'],
         ];
+
         foreach($datas as $v) {
             if(DataSource::where([['name', $v['name']], ['data_model', $v['data_model']]])->doesntExist()) {
                 DataSource::create($v);
