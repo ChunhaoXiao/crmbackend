@@ -17,9 +17,12 @@ class AgendaController extends Controller
      */
     public function index(Request $request)
     {
-        $date = $request->date;
-        $datas = Auth::user()->agendas()->day($date)->latest()->get();
-        return AgendaResource::collection($datas)->collection->groupBy('groups');
+        $date = $request->date??date('Y-m-d');
+        $datas = Auth::user()->agendas()->day($date)->with('type')->latest()->get();
+        //$datas['user'] = Auth::user()->name;
+        $res = AgendaResource::collection($datas)->collection->groupBy('groups');
+        $res['user'] = Auth::user()->name;
+        return $res;
     }
 
     /**
