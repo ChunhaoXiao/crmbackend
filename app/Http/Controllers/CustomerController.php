@@ -17,7 +17,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $datas = Auth::user()->customers()->with('level')->paginate();
+        $datas = Auth::user()->customers()->with(['level', 'lastCall'])->paginate();
         return CustomerResource::collection($datas);
     }
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\Call as CallResource;
+
 class CallController extends Controller
 {
     /**
@@ -13,8 +15,8 @@ class CallController extends Controller
      */
     public function index(Request $request)
     {
-        $datas =  Auth::user()->calls()->where('customer_id', $request->customer_id)->get();
-        return $datas;
+        $datas =  Auth::user()->calls()->where('customer_id', $request->customer_id)->with('type')->get();
+        return CallResource::collection($datas);
     }
 
     /**

@@ -29,4 +29,16 @@ class Customer extends Model
             return asset('Storage/'.$item);
         });
     }
+
+    public function calls() {
+        return $this->hasMany(Call::class, 'customer_id');
+    }
+
+    public function lastCall() {
+        return $this->hasOne(Call::class, 'customer_id')->latest();
+    }
+
+    public function getLastCallTimeAttribute() {
+        return $this->lastCall? $this->lastCall->created_at->toDateString() : $this->created_at->toDateString();
+    }
 }

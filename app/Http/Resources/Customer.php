@@ -23,6 +23,7 @@ class Customer extends JsonResource
         $datas['industry'] = $this->industry->name;
         $datas['created_at'] = $this->created_at->toDateString();
         $datas['updated_at'] = $this->updated_at->toDateString();
+        $datas['last_call_time'] = $this->last_call_time;
         return $datas;
         ///return parent::toArray($request);
         // return [

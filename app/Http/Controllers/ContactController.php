@@ -16,7 +16,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $datas = Auth::user()->contacts()->with('customer')->paginate();
+        return $datas;
     }
 
     
