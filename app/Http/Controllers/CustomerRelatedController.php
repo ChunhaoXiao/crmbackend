@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\Product;
+use App\Http\Resources\Business;
+use App\Http\Resources\Payment;
 
 class CustomerRelatedController extends Controller
 {
@@ -20,11 +22,12 @@ class CustomerRelatedController extends Controller
         $product = $user->businesses()->where('customer_id', $customer_id)->latest()->first()->products[0]??'';
         return [
             'products' => $product? new Product($product):[], //相关产品
-            'business' => $user->businesses()->with('customer')->latest()->first(), //相关商机
+            'business' => new Business($user->businesses()->with('customer')->latest()->first()), //相关商机
            // 'thread' => $user->threads()->latest()->first(),
-            'payment' => $user->payments()->latest()->first(), //相关回款
+            'payment' => new Payment($user->payments()->latest()->first()), //相关回款
             'contract' => $user->contracts()->where('customer_id', $customer_id)->latest()->first(),
         ];
+        
         //$user = Auth::user();
         
         // $user->with([

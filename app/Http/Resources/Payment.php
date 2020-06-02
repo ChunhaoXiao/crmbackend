@@ -16,7 +16,8 @@ class Payment extends JsonResource
     {
         $datas =  parent::toArray($request);
         $datas['created_time'] = Date::parse($this->created_at)->diffForHumans();
-        $data['paymethod'] = $this->paymethod->name;
+        $datas['paymethod'] = $this->paymethod->name;
+        $datas['customer'] = $this->customer->name;
         return $datas;
     }
 }
