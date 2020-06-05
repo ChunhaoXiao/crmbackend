@@ -1,73 +1,105 @@
-<nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav" id="main-menu">
-
-                    <li>
-                        <a class="active-menu" href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="ui-elements.html"><i class="fa fa-desktop"></i> UI Elements</a>
-                    </li> 
-					 
-					 <li>
-                        <a href="#"><i class="fa fa-sitemap"></i>线索<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="chart.html">线索来源</a>
-                            </li>
-                            <li>
-                                <a href="morris-chart.html">线索级别</a>
-                            </li>
-                            <li>
-                                <a href="morris-chart.html">客户行业</a>
-                            </li>
-							</ul>
-						</li>	
-							
-                    <li>
-                        <a href="tab-panel.html"><i class="fa fa-qrcode"></i> Tabs & Panels</a>
-                    </li>
-                    
-                    <li>
-                        <a href="table.html"><i class="fa fa-table"></i> Responsive Tables</a>
-                    </li>
-                    <li>
-                        <a href="form.html"><i class="fa fa-edit"></i> Forms </a>
-                    </li>
-
-
-                    <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-
-                                </ul>
-
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="empty.html"><i class="fa fa-fw fa-file"></i> Empty Page</a>
-                    </li>
-                </ul>
-
+<aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a href="#">
+                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                </a>
             </div>
-
-        </nav>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li class="active has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="index.html">Dashboard 1</a>
+                                </li>
+                                <li>
+                                    <a href="index2.html">Dashboard 2</a>
+                                </li>
+                                <li>
+                                    <a href="index3.html">Dashboard 3</a>
+                                </li>
+                                <li>
+                                    <a href="index4.html">Dashboard 4</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="chart.html">
+                                <i class="fas fa-chart-bar"></i>Charts</a>
+                        </li>
+                        <li>
+                            <a href="table.html">
+                                <i class="fas fa-table"></i>Tables</a>
+                        </li>
+                        <li>
+                            <a href="form.html">
+                                <i class="far fa-check-square"></i>Forms</a>
+                        </li>
+                        <li>
+                            <a href="calendar.html">
+                                <i class="fas fa-calendar-alt"></i>Calendar</a>
+                        </li>
+                        <li>
+                            <a href="map.html">
+                                <i class="fas fa-map-marker-alt"></i>Maps</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-copy"></i>素材管理</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="{{ route('admin.material.index') }}">个人中心背景图片</a>
+                                </li>
+                                <li>
+                                    <a href="register.html">Register</a>
+                                </li>
+                                <li>
+                                    <a href="forget-pass.html">Forget Password</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-desktop"></i>UI Elements</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="button.html">Button</a>
+                                </li>
+                                <li>
+                                    <a href="badge.html">Badges</a>
+                                </li>
+                                <li>
+                                    <a href="tab.html">Tabs</a>
+                                </li>
+                                <li>
+                                    <a href="card.html">Cards</a>
+                                </li>
+                                <li>
+                                    <a href="alert.html">Alerts</a>
+                                </li>
+                                <li>
+                                    <a href="progress-bar.html">Progress Bars</a>
+                                </li>
+                                <li>
+                                    <a href="modal.html">Modals</a>
+                                </li>
+                                <li>
+                                    <a href="switch.html">Switchs</a>
+                                </li>
+                                <li>
+                                    <a href="grid.html">Grids</a>
+                                </li>
+                                <li>
+                                    <a href="fontawesome.html">Fontawesome Icon</a>
+                                </li>
+                                <li>
+                                    <a href="typo.html">Typography</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>

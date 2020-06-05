@@ -38,8 +38,12 @@ Route::middleware('auth:api')->group(function() {
     Route::get('/{customer}/contact', 'CustomerContactController@index');
 
     Route::resource('/agenda', 'AgendaController');
+
+    Route::get('/material', 'MaterialController@index');
     
 });
+
+Route::get('/material', 'MaterialController@index');
 
 
 

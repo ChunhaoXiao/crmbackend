@@ -13,12 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    echo 'adasd';
-    //return view('welcome');
-});
-Route::namespace('Admin')->prefix('admin')->group(function() {
-    Route::get('/', 'IndexController@index')->name('admin.index');
+// Route::get('/', function () {
+//     //echo 'adasd';
+//     //return view('welcome');
+// });
+
+//Route::get('mat', 'Admin\MaterialController@index')->name('admin.mater');
+
+Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function() {
+
+    Route::get('/', 'IndexController@index')->name('index');
     Route::resource('/datasrc', 'DataSourceController');
+    Route::resource('material', 'MaterialController');
+    //Route::get('mater', 'MaterialController@index')->name('mater');
+
 });
 

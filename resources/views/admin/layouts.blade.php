@@ -1,78 +1,80 @@
 <!DOCTYPE html>
-<!-- 
-Template Name: BRILLIANT Bootstrap Admin Template
-Version: 4.5.6
-Author: WebThemez
-Website: http://www.webthemez.com/ 
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta content="" name="description" />
-    <meta content="webthemez" name="author" />
-    <title>CRM 后台管理</title>
-    <!-- Bootstrap Styles-->
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
-    <!-- FontAwesome Styles-->
-    <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet" />
-    <!-- Morris Chart Styles-->
-    <link href="{{ asset('css/morris-0.4.3.min.css') }}" rel="stylesheet" />
-    <!-- Custom Styles-->
-    <link href="{{ asset('css/custom-styles.css') }}" rel="stylesheet" />
-    <!-- Google Fonts-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+<html lang="en">
 
-    <link rel="stylesheet" href="{{ asset('js/Lightweight-Chart/cssCharts.css') }}"> 
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>后台管理</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="{{ asset('vendor//font-face.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/font-awesome-5/css/fontawesome-all.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="{{ asset('vendor/bootstrap-4.1/bootstrap.min.css') }}" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="{{ asset('vendor/animsition/animsition.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/wow/animate.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/slick/slick.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{{ asset('vendor/theme.css') }}" rel="stylesheet" media="all">
+
 </head>
 
-<body>
-    <div id="wrapper">
-        <x-admin.nav/>
-        <x-admin.sidebar/>
-        
-        <div id="page-wrapper">
-		    <div class="header"> 
-                <!-- <h1 class="page-header">
-                    Dashboard <small>Welcome John Doe</small>
-                </h1> -->
-                <ol class="breadcrumb mt-2 border">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Dashboard</a></li>
-                    <li class="active">Data</li>
-                </ol> 				
-		    </div>
-
-            <div id="page-inner">
-		        @yield('content')
-    			<!-- <footer><p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez.com</a></p>
-    			</footer> -->
+<body class="animsition">
+    
+    <x-admin.mobile-header />
+    <x-admin.sidebar />
+    <div class="page-container">
+        <x-admin.desktop-header />
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
             </div>
         </div>
+
     </div>
+    
 
-    <script src="{{ asset('js/jquery-1.10.2.js') }}"></script>
-    <!-- Bootstrap Js -->
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-	 
-    <!-- Metis Menu Js -->
-    <script src="{{ asset('js/jquery.metisMenu.js') }}"></script>
-    <!-- Morris Chart Js -->
-    <script src="{{ asset('js/morris/raphael-2.1.0.min.js') }}"></script>
-    <script src="{{ asset('js/morris/morris.js') }}"></script>
-	
-	
-	<script src="{{ asset('js/easypiechart.js') }}"></script>
-	<script src="{{ asset('js/easypiechart-data.js') }}"></script>
-	
-	 <script src="{{ asset('js/Lightweight-Chart/jquery.chart.js') }}"></script>
-	
-    <!-- Custom Js -->
-    <script src="{{ asset('js/custom-scripts.js') }}"></script>
 
-      
-    <!-- Chart Js -->
-    <script type="text/javascript" src="{{ asset('js/Chart.min.js') }}"></script>  
-    <script type="text/javascript" src="{{ asset('js/chartjs.js') }}"></script> 
+
+    <!-- Jquery JS-->
+    <script src="{{ asset('vendor/jquery-3.2.1.min.js') }}"></script>
+    <!-- Bootstrap JS-->
+    <script src="{{ asset('vendor/bootstrap-4.1/popper.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap-4.1/bootstrap.min.js') }}"></script>
+    <!-- Vendor JS       -->
+    <script src="{{ asset('vendor/slick/slick.min.js') }}">
+    </script>
+    <script src="{{ asset('vendor/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('vendor/animsition/animsition.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap-progressbar/bootstrap-progressbar.min.js') }}">
+    </script>
+    <script src="{{ asset('vendor/counter-up/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('vendor/counter-up/jquery.counterup.min.js') }}">
+    </script>
+    <script src="{{ asset('vendor/circle-progress/circle-progress.min.js') }}"></script>
+    <script src="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+    <script src="{{ asset('vendor/chartjs/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+
+    <!-- Main JS-->
+    <script src="{{ asset('vendor/main.js') }}"></script>
 </body>
-</html>    
+</html>
