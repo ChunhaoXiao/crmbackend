@@ -12,6 +12,10 @@ class Thread extends Model
         'call_date'
     ];
 
+    protected $with = [
+        'src', 'level', 'industry'
+    ];
+
     public function src() {
         return $this->belongsTo(DataSource::class, 'thread_from');
     }
