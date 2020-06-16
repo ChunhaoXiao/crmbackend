@@ -9,7 +9,12 @@ use App\Models\Feedback;
 class FeedbackController extends Controller
 {
     public function index() {
-        $datas = Feedback::with('user')->latest()->paginate(20);
+        $datas = Feedback::with('user')->withCount('reply')->latest()->paginate(15);
         return view('admin.feedback.index', ['datas' => $datas]);
+    }
+
+    public function show(Feedback $feedback)
+    {
+        return view('admin.feedback.show', ['feedback' => $feedback]);
     }
 }

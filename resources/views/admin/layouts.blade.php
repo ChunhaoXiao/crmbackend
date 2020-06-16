@@ -33,6 +33,9 @@
     <!-- Main CSS-->
     <link href="{{ asset('vendor/theme.css') }}" rel="stylesheet" media="all">
 
+    <!-- Jquery JS-->
+    <script src="{{ asset('vendor/jquery-3.2.1.min.js') }}"></script>
+
 </head>
 
 <body class="animsition">
@@ -41,7 +44,7 @@
     <x-admin.sidebar />
     <div class="page-container">
         <x-admin.desktop-header />
-        <div class="main-content">
+        <div class="main-content pb-3">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     @yield('content')
@@ -54,8 +57,7 @@
 
 
 
-    <!-- Jquery JS-->
-    <script src="{{ asset('vendor/jquery-3.2.1.min.js') }}"></script>
+    
     <!-- Bootstrap JS-->
     <script src="{{ asset('vendor/bootstrap-4.1/popper.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-4.1/bootstrap.min.js') }}"></script>

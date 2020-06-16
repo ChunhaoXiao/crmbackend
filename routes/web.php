@@ -39,7 +39,8 @@ Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function() {
 
     Route::resource('/system/aboutus', 'AboutController');
     Route::resource('/system/feedbacks', 'FeedbackController');
-    
 
+    Route::post('/{feedback}/reply', 'FeedbackReplyController@store')->name('feedbackreply.store');
+    
 });
 
