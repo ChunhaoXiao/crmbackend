@@ -73,4 +73,8 @@ class User extends Authenticatable
     public function agendas() {
         return $this->hasMany(Agenda::class, 'user_id');
     }
+
+    public function feedbacks() {
+        return $this->hasMany(Feedback::class, 'user_id');
+    }
 }

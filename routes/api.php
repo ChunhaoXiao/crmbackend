@@ -40,7 +40,10 @@ Route::middleware('auth:api')->group(function() {
     Route::resource('/agenda', 'AgendaController');
 
     Route::get('/material', 'MaterialController@index');
-    
+
+    Route::get('/about', 'AboutController@index');
+
+    Route::post('/feedback', 'FeedbackController@store')->middleware('throttle:2,1');
 });
 
 Route::get('/material', 'MaterialController@index');

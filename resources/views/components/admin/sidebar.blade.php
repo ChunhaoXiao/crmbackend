@@ -7,7 +7,7 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
+                        <!-- <li class="active has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -24,12 +24,25 @@
                                     <a href="index4.html">Dashboard 4</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="{{route('admin.users.index')}}">
                                 <i class="fas fa-chart-bar"></i>用户管理</a>
                         </li>
-                        <li>
+
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-copy"></i>数据管理</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list" @if(strpos(request()->path(), 'datasource')) style="display:block" @endif>
+                                @foreach(App\Models\DataSource::TYPES as $k => $v)
+                                <li>
+                                    <a href="{{ route('admin.datasource.index',['type' => $k]) }}">{{$v}}</a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </li>
+
+                        <!-- <li>
                             <a href="table.html">
                                 <i class="fas fa-table"></i>Tables</a>
                         </li>
@@ -44,7 +57,7 @@
                         <li>
                             <a href="map.html">
                                 <i class="fas fa-map-marker-alt"></i>Maps</a>
-                        </li>
+                        </li> -->
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-copy"></i>素材管理</a>
@@ -60,7 +73,21 @@
                                 </li>
                             </ul>
                         </li>
+
                         <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-copy"></i>系统</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list" @if(strpos(request()->path(), 'system')) style="display:block" @endif>
+                                <li>
+                                    <a href="{{ route('admin.aboutus.create') }}">关于我们</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.feedbacks.index') }}">用户反馈</a>
+                                </li>
+                               
+                            </ul>
+                        </li>
+                        <!-- <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-desktop"></i>UI Elements</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -98,7 +125,7 @@
                                     <a href="typo.html">Typography</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
             </div>

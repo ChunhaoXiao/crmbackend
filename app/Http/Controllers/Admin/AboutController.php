@@ -4,21 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\DataSource;
-use App\Http\Requests\DataSourceRequest;
+use App\Models\About;
 
-class DataSourceController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($type)
+    public function index()
     {
-        $datas = DataSource::src($type)->get();
-       
-        return view('admin.datasource.index', ['datas' => $datas, 'type' => $type]);
+        //
     }
 
     /**
@@ -28,7 +25,8 @@ class DataSourceController extends Controller
      */
     public function create()
     {
-        return view('admin.datasource.create');
+        $data = About::first();
+        return view('admin.about.create', ['data' => $data]);
     }
 
     /**
@@ -37,11 +35,10 @@ class DataSourceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DataSourceRequest $request, $type)
+    public function store(Request $request)
     {
-        $datas = $request->input();
-        DataSource::create($request->input());
-        return redirect()->route('admin.datasource.index');
+        $row = About::first();
+        About::updateOrCreate(['id' => $row->id??0], ['content' => $request->content]);
     }
 
     /**
@@ -61,9 +58,9 @@ class DataSourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($type, DataSource $datasource)
+    public function edit($id)
     {
-        return view('admin.datasource.create', ['data' => $datasource]);
+        //
     }
 
     /**
@@ -73,10 +70,9 @@ class DataSourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(DataSourceRequest $request, $type, DataSource $datasource)
+    public function update(Request $request, $id)
     {
-        $datasource->update($request->input());
-        return redirect()->route('admin.datasource.index');
+        //
     }
 
     /**
@@ -85,9 +81,8 @@ class DataSourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($type, DataSource $datasource)
+    public function destroy($id)
     {
-        $datasource->delete();
-        return response()->json(['status' => 0]);
+        //
     }
 }

@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('mat', 'Admin\MaterialController@index')->name('admin.mater');
 
+
 Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function() {
 
     Route::get('/', 'IndexController@index')->name('index');
@@ -30,6 +31,15 @@ Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function() {
 
     Route::resource('/{user}/thread', 'ThreadController');
     Route::resource('/{user}/products', 'ProductController');
+    Route::resource('{user}/contract', 'ContractController');
+    Route::resource('{user}/customer', 'CustomerController');
+    Route::resource('{user}/business', 'BusinessController');
+
+    Route::resource('/{type}/datasource', 'DataSourceController')->middleware('settype');
+
+    Route::resource('/system/aboutus', 'AboutController');
+    Route::resource('/system/feedbacks', 'FeedbackController');
+    
 
 });
 

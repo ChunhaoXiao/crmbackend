@@ -55,9 +55,9 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="{{route('admin.thread.index', $v)}}">线索</a>
                         <a class="dropdown-item" href="{{ route('admin.products.index', $v) }}">产品</a>
-                        <a class="dropdown-item" href="{{ route('admin.products.index', $v) }}">合同</a>
-                        <a class="dropdown-item" href="{{ route('admin.products.index', $v) }}">客户</a>
-                        <a class="dropdown-item" href="{{ route('admin.products.index', $v) }}">商机</a>
+                        <a class="dropdown-item" href="{{ route('admin.contract.index', $v) }}">合同</a>
+                        <a class="dropdown-item" href="{{ route('admin.customer.index', $v) }}">客户</a>
+                        <a class="dropdown-item" href="{{ route('admin.business.index', $v) }}">商机</a>
                         <!-- <a class="dropdown-item" href="#">Something else here</a> -->
                     </div>
                     </div>

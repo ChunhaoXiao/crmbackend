@@ -29,7 +29,7 @@
     <link href="{{ asset('vendor/slick/slick.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Main CSS-->
     <link href="{{ asset('vendor/theme.css') }}" rel="stylesheet" media="all">
 
@@ -76,5 +76,28 @@
 
     <!-- Main JS-->
     <script src="{{ asset('vendor/main.js') }}"></script>
+
+    <script>
+        $(function(){
+            $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+            $("a[data-type='delete']").on('click', function() {
+                const url = $(this).data('url');
+                alert(url);
+
+                $.ajax({
+                    url:url,
+                    type:'delete',
+                    success: res => {
+                        location.reload();
+                    }
+                })
+            });
+        })
+    </script>
 </body>
 </html>
