@@ -13,6 +13,11 @@ class Agenda extends Model
         'DUE' => '已过期',
     ];
 
+    protected $appends = [
+        'time', 
+        'agent_start'
+    ];
+
     protected $guarded = [];
 
     public function scopeDay($query, $date) {
@@ -33,6 +38,10 @@ class Agenda extends Model
         return $this->start_time->format('g:i A');
     }
 
+    public function getAgentStartAttribute() {
+        return $this->start_time->format('Y-m-d H:i');
+    }
+
     public function type() {
         return $this->belongsTo(DataSource::class, 'theme');
     }
@@ -43,6 +52,9 @@ class Agenda extends Model
             return '进行中';
         }
         return $diff > 0 ? '未开始' : '已过期';
-        
+    }
+
+    public function scopeComing($query) {
+        return $query->where('start_time', '>', now())->orderBy("start_time")->limit(5);
     }
 }

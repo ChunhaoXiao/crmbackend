@@ -77,4 +77,8 @@ class User extends Authenticatable
     public function feedbacks() {
         return $this->hasMany(Feedback::class, 'user_id');
     }
+
+    public function notices() {
+        return $this->hasMany(Notice::class, 'to_user');
+    }
 }

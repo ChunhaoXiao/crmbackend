@@ -44,6 +44,10 @@ Route::middleware('auth:api')->group(function() {
     Route::get('/about', 'AboutController@index');
 
     Route::post('/feedback', 'FeedbackController@store')->middleware('throttle:2,1');
+    Route::get('/pending', 'PendingAgendaController@index');
+    Route::get('/pending/{agenda}', 'PendingAgendaController@show');
+
+    Route::get('/notices', 'NoticeController@index');
 });
 
 Route::get('/material', 'MaterialController@index');

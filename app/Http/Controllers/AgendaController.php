@@ -15,6 +15,7 @@ class AgendaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index(Request $request)
     {
         $date = $request->date??date('Y-m-d');
