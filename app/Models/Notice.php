@@ -15,13 +15,17 @@ class Notice extends Model
     ];
 
     protected $appends = [
-        'custom_title',
+        'custom_title', 'reply_time'
     ];
 
     public function getCustomTitleAttribute() {
         
         return Str::limit($this->content, 25);
 
+    }
+
+    public function getReplyTimeAttribute() {
+        return $this->created_at->toDateTimeString();
     }
 
 }

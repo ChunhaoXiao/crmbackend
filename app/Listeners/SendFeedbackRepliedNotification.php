@@ -29,6 +29,7 @@ class SendFeedbackRepliedNotification
     {
         $reply = $event->reply;
         Notice::create([
+            'title' => '回复你的反馈:'.$reply->feedback->title,
             'content' => $reply->notice_content,
             'to_user' => $reply->feedback->user_id,
         ]);

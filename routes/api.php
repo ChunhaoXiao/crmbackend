@@ -47,7 +47,7 @@ Route::middleware('auth:api')->group(function() {
     Route::get('/pending', 'PendingAgendaController@index');
     Route::get('/pending/{agenda}', 'PendingAgendaController@show');
 
-    Route::get('/notices', 'NoticeController@index');
+    Route::resource('/notices', 'NoticeController');
 });
 
 Route::get('/material', 'MaterialController@index');
