@@ -6,7 +6,7 @@ use App\Events\FeedbackReplied;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Models\Notice;
-
+use Illuminate\Support\Str;
 class SendFeedbackRepliedNotification
 {
     /**
@@ -29,7 +29,7 @@ class SendFeedbackRepliedNotification
     {
         $reply = $event->reply;
         Notice::create([
-            'title' => '回复你的反馈:'.$reply->feedback->title,
+            'title' => '回复你的反馈:'.Str::limit($reply->feedback->content, 25),
             'content' => $reply->notice_content,
             'to_user' => $reply->feedback->user_id,
         ]);

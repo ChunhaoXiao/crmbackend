@@ -4,8 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\Models\Traits\CreatedFromNow;
+
 class Notice extends Model
 {
+    use CreatedFromNow;
+
     protected $fillable = [
         'title',
         'content',
@@ -15,7 +19,7 @@ class Notice extends Model
     ];
 
     protected $appends = [
-        'custom_title', 'reply_time'
+        'custom_title', 'reply_time', 'created_from_now'
     ];
 
     public function getCustomTitleAttribute() {
