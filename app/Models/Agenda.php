@@ -15,7 +15,8 @@ class Agenda extends Model
 
     protected $appends = [
         'time', 
-        'agent_start'
+        'agenda_start',
+        'agenda_end',
     ];
 
     protected $guarded = [];
@@ -38,8 +39,12 @@ class Agenda extends Model
         return $this->start_time->format('g:i A');
     }
 
-    public function getAgentStartAttribute() {
-        return $this->start_time->format('Y-m-d H:i');
+    public function getAgendaStartAttribute() {
+        return $this->start_time->format('m-d H:i');
+    }
+
+    public function getAgendaEndAttribute() {
+        return $this->end_time->format('m-d H:i');
     }
 
     public function type() {

@@ -18,7 +18,8 @@ class AgendaResource extends JsonResource
         $data['time'] = $this->time;
         $data['theme'] = $this->type->name;
         $data['status'] = $this->status;
-        
+       //$data['agent_end'] = $this->agent_end;
+       // $data['agent_start'] = $this->ag
         $data['description'] =  !empty($this->description) ? Str::limit($this->description, 20) : '';
         return $data;
     }

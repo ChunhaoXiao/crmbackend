@@ -82,6 +82,9 @@
                                     <a href="{{ route('admin.aboutus.create') }}">关于我们</a>
                                 </li>
                                 <li>
+                                    <a href="{{ route('admin.anounce.index') }}">公告管理</a>
+                                </li>
+                                <li>
                                     <a href="{{ route('admin.feedbacks.index') }}">用户反馈</a>
                                 </li>
                                

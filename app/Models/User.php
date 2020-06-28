@@ -81,4 +81,8 @@ class User extends Authenticatable
     public function notices() {
         return $this->hasMany(Notice::class, 'to_user');
     }
+
+    public function anouncements() {
+        return $this->hasMany(UserAnouncement::class, 'user_id');
+    }
 }

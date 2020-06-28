@@ -20,6 +20,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\FeedbackReplied' => [
             'App\Listeners\SendFeedbackRepliedNotification',
+        ],
+        'App\Events\AnouncePosted' => [
+            'App\Listeners\SendAnounceToUsers',
         ]
     ];
 
